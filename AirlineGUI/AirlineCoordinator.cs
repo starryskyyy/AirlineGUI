@@ -19,9 +19,9 @@ namespace AirlineGUI
             //bManager = new BookingManager(maxCust, flManager, custManager);
         }
 
-        public bool addFlight(int flightNo, string origin, string destination, int maxSeats)
+        public bool addFlight(int fn, string or, string dest, int mSeats)
         {
-            return flManager.addFlight(flightNo, origin, destination, maxSeats);
+            return flManager.addFlight(fn, or, dest, mSeats);
         }
 
 

@@ -111,5 +111,20 @@ namespace AirlineGUI
                 this.Close();
             }
         }
+
+        private void viewCust_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Danny\source\repos\AirlineGUI\AirlineGUI\bin\Debug\customerDB.txt");
+            List<string> list = new List<string>();
+            while ((line = file.ReadLine()) != null)
+            {
+                customerBox.Items.Add(line);
+                list.Add(line);
+                counter++;
+            }
+            string[] arr = list.ToArray();
+        }
     }
 }

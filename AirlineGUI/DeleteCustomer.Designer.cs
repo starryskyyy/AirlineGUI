@@ -47,6 +47,8 @@ namespace AirlineGUI
             this.dcLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.customerBox = new System.Windows.Forms.ListBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.viewCust = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -275,11 +277,42 @@ namespace AirlineGUI
             this.customerBox.Size = new System.Drawing.Size(500, 184);
             this.customerBox.TabIndex = 22;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(582, 442);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(186, 30);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "Delete Customer";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // viewCust
+            // 
+            this.viewCust.FlatAppearance.BorderSize = 0;
+            this.viewCust.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.viewCust.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.viewCust.ForeColor = System.Drawing.Color.White;
+            this.viewCust.Location = new System.Drawing.Point(368, 442);
+            this.viewCust.Name = "viewCust";
+            this.viewCust.Size = new System.Drawing.Size(186, 30);
+            this.viewCust.TabIndex = 24;
+            this.viewCust.Text = "View Customer";
+            this.viewCust.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.viewCust.UseVisualStyleBackColor = true;
+            this.viewCust.Click += new System.EventHandler(this.viewCust_Click);
+            // 
             // DeleteCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
+            this.Controls.Add(this.viewCust);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.customerBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dcLabel);
@@ -287,7 +320,6 @@ namespace AirlineGUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DeleteCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -316,6 +348,8 @@ namespace AirlineGUI
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListBox customerBox;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button viewCust;
     }
 }
 

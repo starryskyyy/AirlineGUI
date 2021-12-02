@@ -109,10 +109,7 @@ namespace AirlineGUI
 
         public static void viewCustomers()
         {
-            Console.Clear();
-            Console.WriteLine(aCoord.customersList());
-            Console.WriteLine("\nPress any key to continue return to the main menu.");
-            Console.ReadKey();
+            aCoord.customersList();
         }
 
         /*public static void viewBooking()

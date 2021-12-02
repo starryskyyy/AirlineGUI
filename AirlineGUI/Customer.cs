@@ -8,7 +8,7 @@ namespace AirlineGUI
 {
     class Customer
     {
-        private static int IdCount = 999;
+        private static int IdCount = 1000;
         private int customerId;
         private string firstName;
         private string lastName;

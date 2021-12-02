@@ -20,15 +20,15 @@ namespace AirlineGUI
 
         public Flight[] flightDatabase()
         {
-            int lnCount = File.ReadLines("FlightDB.txt").Count();
-            StreamReader input = new StreamReader("FlightDB.txt", true);
+            int lnCount = File.ReadLines("flightDB.txt").Count();
+            StreamReader input = new StreamReader("flightDB.txt", true);
             Flight[] list = new Flight[lnCount];
             string[] flightlist;
             int cnt = 0;
             while (input.Peek() != -1)
             {
                 flightlist = input.ReadLine().Split(',');
-                list[cnt++] = new Flight(int.Parse(flightlist[0]), flightlist[1], flightlist[2], int.p(flightlist[3]));
+                list[cnt++] = new Flight(Convert.ToInt32(flightlist[0]), flightlist[1], flightlist[2], Convert.ToInt32(flightlist[3]));
             }
             input.Close();
             return list;
@@ -40,14 +40,14 @@ namespace AirlineGUI
             return lnCount;
         }
 
-        public bool addFlight(int fn, string or, string dest, int mSeats)
+        public bool addFlight(int fn, string origin, string destination, int maxSeats)
         {
             Flight[] list = flightDatabase();
             if (numOfFlight() < maxFlights)
             {
 
                 StreamWriter outputFile = new StreamWriter("flightDB.txt", true);
-                Flight f = new Flight(fn, or, dest, mSeats);
+                Flight f = new Flight(fn, origin, destination, maxSeats);
                 outputFile.WriteLine(f);
                 outputFile.Close();
                 return true;
@@ -110,7 +110,7 @@ namespace AirlineGUI
             bool passengers = getPassengers();
             if (loc == -1 && passengers == true) { return false; }
             list.RemoveAt(loc);
-            StreamWriter outputFile = new StreamWriter("FlightDB.txt");
+            StreamWriter outputFile = new StreamWriter("flightDB.txt");
             for (int x = 0; x < list.Count; x++)
             {
                 Flight f = new Flight(list[x].getFlightNumber(), list[x].getOrigin(), list[x].getDestination(), list[x].getMaxSeats());

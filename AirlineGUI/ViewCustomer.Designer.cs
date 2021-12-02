@@ -47,6 +47,7 @@ namespace AirlineGUI
             this.vcLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.customerBox = new System.Windows.Forms.ListBox();
+            this.btnView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -275,11 +276,27 @@ namespace AirlineGUI
             this.customerBox.Size = new System.Drawing.Size(500, 184);
             this.customerBox.TabIndex = 22;
             // 
+            // btnView
+            // 
+            this.btnView.FlatAppearance.BorderSize = 0;
+            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnView.ForeColor = System.Drawing.Color.White;
+            this.btnView.Location = new System.Drawing.Point(464, 455);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(186, 30);
+            this.btnView.TabIndex = 13;
+            this.btnView.Text = "View Customers";
+            this.btnView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
             // ViewCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
+            this.Controls.Add(this.btnView);
             this.Controls.Add(this.customerBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.vcLabel);
@@ -316,6 +333,7 @@ namespace AirlineGUI
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListBox customerBox;
+        private System.Windows.Forms.Button btnView;
     }
 }
 
