@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AirlineGUI
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1()
+        public MainMenu()
         {
             InitializeComponent();
         }
@@ -94,7 +94,7 @@ namespace AirlineGUI
         private void btnMainMenu_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 f1 = new Form1();
+            MainMenu f1 = new MainMenu();
             f1.ShowDialog();
             this.Close();
         }

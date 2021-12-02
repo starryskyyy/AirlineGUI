@@ -64,6 +64,9 @@
     <Compile Include="AddFlight.Designer.cs">
       <DependentUpon>AddFlight.cs</DependentUpon>
     </Compile>
+    <Compile Include="AirlineCoordinator.cs" />
+    <Compile Include="CustomerManager.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="DeleteCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +79,13 @@
     <Compile Include="DeleteFlight.Designer.cs">
       <DependentUpon>DeleteFlight.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Flight.cs" />
+    <Compile Include="FlightManager.cs" />
+    <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,8 +116,8 @@
     <EmbeddedResource Include="DeleteFlight.resx">
       <DependentUpon>DeleteFlight.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

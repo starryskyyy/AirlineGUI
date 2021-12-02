@@ -49,7 +49,7 @@ namespace AirlineGUI
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 mm = new Form1();
+            MainMenu mm = new MainMenu();
             mm.ShowDialog();
             this.Close();
         }
@@ -127,11 +127,31 @@ namespace AirlineGUI
         //Create flights and validates textbox
         private void btnAddFlights_Click(object sender, EventArgs e)
         {
+            int fn = getValidInt(fnTextBox.Text);
+            string or = (orTextBox.Text);
+            string dest = (destTextBox.Text);
+            int mSeats = getValidInt(mSeatsTextBox.Text);
+
             if (String.IsNullOrEmpty(fnTextBox.Text) || String.IsNullOrEmpty(orTextBox.Text) || String.IsNullOrEmpty(destTextBox.Text) || String.IsNullOrEmpty(mSeatsTextBox.Text))
             {
                 MessageBox.Show("Uh Oh...Information Is Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
+            else
+            {
+                MessageBox.Show("You have added a flight", "Success", MessageBoxButtons.OK);
+                Program.addFlight(fn, or, dest, mSeats);
+            }
         }
+
+        public static int getValidInt(string x)
+        {
+            int number;
+            while (!int.TryParse(x, out number))
+            {
+
+            }
+            return number;
+        }
+
     }
 }

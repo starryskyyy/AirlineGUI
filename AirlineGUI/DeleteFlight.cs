@@ -44,7 +44,7 @@ namespace AirlineGUI
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 mm = new Form1();
+            MainMenu mm = new MainMenu();
             mm.ShowDialog();
             this.Close();
         }

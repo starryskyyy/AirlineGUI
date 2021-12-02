@@ -1,17 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AirlineGUI
 {
     public partial class AddCustomer : Form
     {
+
         public AddCustomer()
         {
             InitializeComponent();
@@ -44,7 +38,7 @@ namespace AirlineGUI
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 mm = new Form1();
+            MainMenu mm = new MainMenu();
             mm.ShowDialog();
             this.Close();
         }
@@ -121,9 +115,17 @@ namespace AirlineGUI
         //Creates a customer and validate textbox
         private void btnAddCustomers_Click(object sender, EventArgs e)
         {
+            string fname = (fnameTextBox.Text);
+            string lname = (lnameTextBox.Text);
+            string ph = (phTextBox.Text);
             if (String.IsNullOrEmpty(fnameTextBox.Text) || String.IsNullOrEmpty(lnameLabel.Text) || String.IsNullOrEmpty(phTextBox.Text))
             {
                 MessageBox.Show("Uh Oh...Information Is Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Successfully added customer!", "Successful", MessageBoxButtons.OK);
+                Program.addCustomer(fname, lname, ph);
             }
         }
     }
