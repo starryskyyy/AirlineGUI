@@ -104,7 +104,7 @@ namespace AirlineGUI
 
         private void btnDeleteFlights_Click(object sender, EventArgs e)
         {
-                        this.Hide();
+            this.Hide();
             DeleteFlight df = new DeleteFlight();
             df.ShowDialog();
             this.Close();
@@ -127,20 +127,41 @@ namespace AirlineGUI
         //Create flights and validates textbox
         private void btnAddFlights_Click(object sender, EventArgs e)
         {
-            int fn;
-            string or = (orTextBox.Text);
-            string dest = (destTextBox.Text);
-            int mSeats;
 
-            if (!int.TryParse(fnTextBox.Text, out fn) || String.IsNullOrEmpty(orTextBox.Text) || String.IsNullOrEmpty(destTextBox.Text) || !int.TryParse(mSeatsTextBox.Text, out mSeats))
+            if (!string.IsNullOrWhiteSpace(fnTextBox.Text) && !string.IsNullOrWhiteSpace(orTextBox.Text) && !string.IsNullOrWhiteSpace(destTextBox.Text) && !string.IsNullOrWhiteSpace(mSeatsTextBox.Text))
             {
-                MessageBox.Show("Uh Oh...Information Is Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                int fn = getValidation(fnTextBox.Text);
+                string or = (orTextBox.Text);
+                string dest = (destTextBox.Text);
+                int mSeats = getValidation(mSeatsTextBox.Text);
+                fnTextBox.Text = "";
+                orTextBox.Text = "";
+                destTextBox.Text = "";
+                mSeatsTextBox.Text = "";
+                if (Program.addFlight(fn, or, dest, mSeats))
+                {
+                    MessageBox.Show("Flight was added successfully!", "Successful", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Uh Oh...Flight not added", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
-                MessageBox.Show("You have added a flight", "Success", MessageBoxButtons.OK);
-                Program.addFlight(fn, or, dest, mSeats);
+                MessageBox.Show("Uh Oh...Information Is Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+        }
+
+        public static int getValidation(string i)
+        {
+            int choice;
+            if (!int.TryParse(i, out choice))
+            {
+                MessageBox.Show("Please enter a number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            return choice;
         }
 
     }

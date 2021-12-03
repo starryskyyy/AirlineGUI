@@ -69,10 +69,11 @@ namespace AirlineGUI
 
         private void btnViewFlights_Click(object sender, EventArgs e)
         {
+            ViewFlight vf = new ViewFlight(Program.viewFlights());
+            vf.Location = this.Location;
+            vf.StartPosition = FormStartPosition.Manual;
+            vf.Show();
             this.Hide();
-            ViewFlight vf = new ViewFlight();
-            vf.ShowDialog();
-            this.Close();
         }
 
         private void btnViewCustomers_Click(object sender, EventArgs e)
@@ -101,10 +102,11 @@ namespace AirlineGUI
 
         private void btnDeleteFlights_Click(object sender, EventArgs e)
         {
+            DeleteFlight df = new DeleteFlight(Program.viewFlights());
+            df.Location = this.Location;
+            df.StartPosition = FormStartPosition.Manual;
+            df.Show();
             this.Hide();
-            DeleteFlight df = new DeleteFlight();
-            df.ShowDialog();
-            this.Close();
         }
         //End of Switching Forms
 
@@ -119,6 +121,11 @@ namespace AirlineGUI
             {
                 this.Close();
             }
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

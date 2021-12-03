@@ -19,165 +19,86 @@ namespace AirlineGUI
 
         static AirlineCoordinator aCoord;
 
-        public static void addFlight(int fn, string or, string dest, int mSeats)
+        //Method for adding flight
+        public static bool addFlight(int flNo, string or, string dest, int mSeats)
         {
-            aCoord.addFlight(fn, or, dest, mSeats);
-
-        }
-
-
-        public static void addCustomer(string fName, string lName, string phone)
-        {
-            aCoord.addCustomer(fName, lName, phone);
-        }
-
-        /*public static void addBooking()
-        {
-            Console.WriteLine(aCoord.flightList());
-            Console.WriteLine(aCoord.customersList());
-            Console.Write("\nPlease enter the flight number: ");
-            int flightNo = getValidFlightNum();
-            Console.Write("\nPlease enter the Customer ID: ");
-            int id = getValidCustomerId();
-
-            if (aCoord.flightExists(flightNo) && aCoord.customerExists(id)) //flight && customer exist
+            if (aCoord.addFlight(flNo, or, dest, mSeats))
             {
-                if (aCoord.hasSpace())
-                {
-                    if (aCoord.addBooking(id, flightNo))
-                    {
-                        Console.WriteLine("\nBooking was successfully made!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("\nNo available seats!");
-                }
-            }
-            else if (!aCoord.customerExists(id))
-            {
-                Console.WriteLine("\nCustomer with id {0} does not exists!", id);
-            }
-            else if (!aCoord.flightExists(flightNo))
-            {
-                Console.WriteLine("\nFlight number {0} does not exists!", flightNo);
-            }
-
-
-            Console.WriteLine("\nPress any key to continue return to the main menu.");
-            Console.ReadKey();
-        }*/
-
-        public static void viewFlights()
-        {
-            Console.WriteLine(aCoord.flightList());
-
-            int id, choice;
-            Console.WriteLine("\n1. Yes\n2. No");
-            Console.Write("\nPlease select one option: ");
-            choice = Convert.ToInt32(Console.ReadLine());
-
-            if (choice == 1)
-            {
-                Console.WriteLine("\nPlease enter flight number: \n");
-                int flightNo = Convert.ToInt32(Console.ReadLine());
-
-                if (aCoord.getFlight(flightNo) != null)
-                {
-                    Console.Clear();
-                    Console.WriteLine("\n" + aCoord.getFlight(flightNo).toString());
-                    Console.WriteLine("\nPress any key to continue return to the main menu.");
-                    Console.ReadKey();
-
-                }
-                else
-                {
-                    Console.WriteLine("\nFlight number {0} was not found!", flightNo);
-                    Console.WriteLine("\nPress any key to continue return to the main menu.");
-                    Console.ReadKey();
-                }
+                return true;
             }
             else
             {
-                Console.WriteLine("\nPress any key to continue return to the main menu.");
-                Console.ReadKey();
+                return false;
             }
 
-
+        }
+        //Method for adding Customer
+        public static bool addCustomer(string fName, string lName, string phone)
+        {
+            if (aCoord.addCustomer(fName, lName, phone))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        //Method for adding a booking
+        public static bool addBooking(int custId, int flightNo)
+        {
+            if (aCoord.addBooking(custId, flightNo))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-
-        public static void viewCustomers()
+        public static string viewFlights()
         {
-            aCoord.customersList();
+            string s = aCoord.flightList();
+            return s;
+
         }
-
-        /*public static void viewBooking()
+        //Method for Viewing customers
+        public static string viewCustomers()
         {
-            Console.Clear();
-            darkYellowColor("-----------View Booking----------\n");
-            Console.WriteLine(aCoord.bookingsList());
-            Console.WriteLine("\nPress any key to continue return to the main menu.");
-            Console.ReadKey();
-
-        }*/
-
-        public static void deleteCustomer()
+            string s = aCoord.customersList();
+            return s;
+        }
+        //Method to View bookings
+        public static string viewBooking()
         {
-
-            int cid;
-            Console.Clear();
-            Console.WriteLine(aCoord.customersList());
-            Console.Write("\nPlease enter a Customer ID to delete: ");
-            cid = Convert.ToInt32(Console.ReadLine());
+            string s = aCoord.bookingList();
+            return s;
+        }
+        //method to delete customer
+        public static bool deleteCustomer(int cid)
+        {
             if (aCoord.deleteCustomer(cid))
             {
-                Console.WriteLine("\nCustomer with id {0} deleted!", cid);
-
-            }
-            else if (aCoord.deleteCustomer(cid) && aCoord.getBookings() == false)
-            {
-                Console.WriteLine("\nSorry customer has a booking!");
+                return true;
             }
             else
             {
-                Console.WriteLine("\nCustomer with id {0} was not found!", cid);
+                return false;
             }
-            Console.WriteLine("\nPress any key to continue return to the main menu.");
-            Console.ReadKey();
         }
-
-        public static void deleteFlight()
+        //Method to delete flight
+        public static bool deleteFlight(int fid)
         {
-            int id;
-            Console.Clear();
-            Console.WriteLine(aCoord.flightList());
-            Console.Write("\nPlease enter a flight number to delete: ");
-            id = Convert.ToInt32(Console.ReadLine());
-            if (aCoord.deleteFlight(id))
+            if (aCoord.deleteFlight(fid))
             {
-                Console.WriteLine("\nFlight number {0} deleted!", id);
-            }
-            else if (aCoord.deleteFlight(id) && aCoord.getPassengers() == false)
-            {
-                Console.WriteLine("\nSorry this flight has customers booked!");
+                return true;
             }
             else
             {
-                Console.WriteLine("\nFlight number {0} was not found!", id);
+                return false;
             }
-            Console.WriteLine("\nPress any key to continue return to the main menu.");
-            Console.ReadKey();
         }
 
-
-        public static void showMainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("XYZ AirLines Limited.\n\nMenu:\n");
-            Console.WriteLine("1. Add Flight\n2. Add Customer\n3. Add Booking\n4. View Flights\n5. View Customers\n6. View Bookings\n");
-            Console.WriteLine("7. Delete Flight\n8. Delete Customer");
-            Console.WriteLine("9. Exit\n");
-        }
     }
 }

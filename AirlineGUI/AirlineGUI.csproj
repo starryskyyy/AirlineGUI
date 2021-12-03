@@ -65,6 +65,8 @@
       <DependentUpon>AddFlight.cs</DependentUpon>
     </Compile>
     <Compile Include="AirlineCoordinator.cs" />
+    <Compile Include="Booking.cs" />
+    <Compile Include="BookingManager.cs" />
     <Compile Include="CustomerManager.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DeleteCustomer.cs">

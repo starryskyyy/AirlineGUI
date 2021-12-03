@@ -290,6 +290,7 @@ namespace AirlineGUI
             this.btnDelete.Text = "Delete Customer";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // viewCust
             // 

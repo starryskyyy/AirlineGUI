@@ -29,6 +29,7 @@ namespace AirlineGUI
         public string getFirstName() { return firstName; }
         public string getLastName() { return lastName; }
         public string getPhone() { return phone; }
+        public string getFullName() { return firstName + lastName; }
         public int getNumBookings() { return numBookings; }
 
 

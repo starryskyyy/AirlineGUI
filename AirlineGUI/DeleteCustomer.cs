@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,19 +113,40 @@ namespace AirlineGUI
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string path = "customerDB.txt";
+            string line = Convert.ToString(customerBox.SelectedItem);
+            var oldLines = File.ReadAllLines(path);
+            var newLines = oldLines.Where(data => !data.Contains(line));
+            File.WriteAllLines(path, newLines);
+            FileStream obj = new FileStream(path, FileMode.Append);
+            obj.Close();
+
+            FileInfo fi = new FileInfo("customerDB.txt");
+            using(StreamReader sr = fi.OpenText())
+            {
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {                    
+                    customerBox.Text = s;
+                }
+                sr.Close();
+            }
+        }
+
         private void viewCust_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Danny\source\repos\AirlineGUI\AirlineGUI\bin\Debug\customerDB.txt");
-            List<string> list = new List<string>();
-            while ((line = file.ReadLine()) != null)
+            FileInfo file = new FileInfo("customerDB.txt");
+            using (StreamReader sr = file.OpenText())
             {
-                customerBox.Items.Add(line);
-                list.Add(line);
-                counter++;
+                string s = "";
+                while ((s = sr.ReadLine()) != null)
+                {
+                    customerBox.Items.Add(s);
+                }
+                sr.Close();
             }
-            string[] arr = list.ToArray();
         }
     }
 }

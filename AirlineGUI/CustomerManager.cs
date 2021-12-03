@@ -20,6 +20,11 @@ namespace AirlineGUI
 
         public static Customer[] customerDatabase()
         {
+            string path = "customerDB.txt";
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
             int lnCount = File.ReadLines("customerDB.txt").Count();
             StreamReader input = new StreamReader("customerDB.txt", true);
             Customer[] list = new Customer[lnCount];
@@ -55,7 +60,7 @@ namespace AirlineGUI
             return false;
         }
 
-
+        //Find customer by name
         public int findCustomerByName(string fName, string lName, string phone)
         {
             Customer[] list = customerDatabase();
@@ -67,7 +72,7 @@ namespace AirlineGUI
             return -1;
         }
 
-
+        //Check if customer exists
         public bool customerExists(string fName, string lName, string phone)
         {
             int loc = findCustomerByName(fName, lName, phone);
@@ -75,6 +80,7 @@ namespace AirlineGUI
             return true;
         }
 
+        //Finds customer
         public int findCustomer(int cid)
         {
             Customer[] list = customerDatabase();
@@ -86,6 +92,18 @@ namespace AirlineGUI
             return -1;
         }
 
+        public int findCustomer(string name)
+        {
+            Customer[] list = customerDatabase();
+            for (int x = 0; x < list.Length; x++)
+            {
+                if (list[x].getFullName() == name)
+                    return list[x].getId();
+            }
+            return -1;
+        }
+
+        //Check if customer exists by ID
         public bool customerExists(int id)
         {
             int loc = findCustomer(id);
@@ -93,6 +111,7 @@ namespace AirlineGUI
             return true;
         }
 
+        //Grabs the booking information
         public bool getBookings()
         {
             Customer[] list = customerDatabase();
@@ -104,6 +123,7 @@ namespace AirlineGUI
             return false;
         }
 
+        //Deletes a customer
         public bool deleteCustomer(int cid)
         {
             List<Customer> list = customerDatabase().ToList();
@@ -121,6 +141,7 @@ namespace AirlineGUI
             return true;
         }
 
+        //Get customer by ID
         public Customer getCustomer(int id)
         {
             Customer[] list = customerDatabase();

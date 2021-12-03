@@ -46,7 +46,7 @@ namespace AirlineGUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.deleteLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.deleteBox = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -265,22 +265,21 @@ namespace AirlineGUI
             this.panel3.Size = new System.Drawing.Size(500, 3);
             this.panel3.TabIndex = 21;
             // 
-            // deleteBox
+            // textBox1
             // 
-            this.deleteBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteBox.FormattingEnabled = true;
-            this.deleteBox.ItemHeight = 20;
-            this.deleteBox.Location = new System.Drawing.Point(316, 193);
-            this.deleteBox.Name = "deleteBox";
-            this.deleteBox.Size = new System.Drawing.Size(500, 184);
-            this.deleteBox.TabIndex = 22;
+            this.textBox1.Location = new System.Drawing.Point(316, 192);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(500, 219);
+            this.textBox1.TabIndex = 22;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // DeleteFlight
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
-            this.Controls.Add(this.deleteBox);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.deleteLabel);
             this.Controls.Add(this.panel1);
@@ -315,7 +314,7 @@ namespace AirlineGUI
         private System.Windows.Forms.Label deleteLabel;
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListBox deleteBox;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

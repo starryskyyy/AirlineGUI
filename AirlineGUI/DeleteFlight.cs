@@ -12,9 +12,10 @@ namespace AirlineGUI
 {
     public partial class DeleteFlight : Form
     {
-        public DeleteFlight()
+        public DeleteFlight(string s)
         {
             InitializeComponent();
+            textBox1.Text = s;
         }
 
         //Moveable Form
@@ -60,7 +61,7 @@ namespace AirlineGUI
         private void btnViewFlights_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ViewFlight vf = new ViewFlight();
+            ViewFlight vf = new ViewFlight(Program.viewFlights());
             vf.ShowDialog();
             this.Close();
         }
@@ -84,7 +85,7 @@ namespace AirlineGUI
         private void btnDeleteFlights_Click(object sender, EventArgs e)
         {
             this.Hide();
-            DeleteFlight df = new DeleteFlight();
+            DeleteFlight df = new DeleteFlight(Program.viewFlights());
             df.ShowDialog();
             this.Close();
         }
@@ -109,6 +110,11 @@ namespace AirlineGUI
             {
                 this.Close();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

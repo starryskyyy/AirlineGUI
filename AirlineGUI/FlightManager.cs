@@ -18,8 +18,13 @@ namespace AirlineGUI
             flightList = new Flight[maxFlights];
         }
 
-        public Flight[] flightDatabase()
+        public Flight[] getFlightsFromDatabase()
         {
+            string path = "flightDB.txt";
+            if (!File.Exists(path))
+            {
+                File.Create(path);
+            }
             int lnCount = File.ReadLines("flightDB.txt").Count();
             StreamReader input = new StreamReader("flightDB.txt", true);
             Flight[] list = new Flight[lnCount];
@@ -29,6 +34,7 @@ namespace AirlineGUI
             {
                 flightlist = input.ReadLine().Split(',');
                 list[cnt++] = new Flight(Convert.ToInt32(flightlist[0]), flightlist[1], flightlist[2], Convert.ToInt32(flightlist[3]));
+
             }
             input.Close();
             return list;
@@ -40,24 +46,35 @@ namespace AirlineGUI
             return lnCount;
         }
 
-        public bool addFlight(int fn, string origin, string destination, int maxSeats)
+        public bool addFlight(int flNo, string or, string dest, int mSeats)
         {
-            Flight[] list = flightDatabase();
-            if (numOfFlight() < maxFlights)
-            {
 
-                StreamWriter outputFile = new StreamWriter("flightDB.txt", true);
-                Flight f = new Flight(fn, origin, destination, maxSeats);
-                outputFile.WriteLine(f);
-                outputFile.Close();
-                return true;
+            if (numOfFlight() > 0)
+            {
+                Flight[] list = getFlightsFromDatabase();
+                for (int i = 0; i < list.Length; i++)
+                {
+                    if (list[i].getFlightNumber() == flNo)
+                    {
+                        return false;
+                    }
+                }
             }
-            return false;
+            
+            if (numOfFlight() >= maxFlights)
+            {
+                return false;
+            }
+            StreamWriter output = new StreamWriter("flightDB.txt", true);
+            Flight f = new Flight(flNo, or, dest, mSeats);
+            output.WriteLine(f);
+            output.Close();
+            return true;
         }
 
         public int findFlight(int fid)
         {
-            Flight[] list = flightDatabase();
+            Flight[] list = getFlightsFromDatabase();
             for (int x = 0; x < list.Length; x++)
             {
                 if (list[x].getFlightNumber() == fid)
@@ -75,7 +92,7 @@ namespace AirlineGUI
 
         public bool getPassengers()
         {
-            Flight[] list = flightDatabase();
+            Flight[] list = getFlightsFromDatabase();
             for (int x = 0; x < list.Length; x++)
             {
                 if (list[x].getNumPassengers() == 0)
@@ -86,7 +103,7 @@ namespace AirlineGUI
 
         public bool hasSpace()
         {
-            Flight[] list = flightDatabase();
+            Flight[] list = getFlightsFromDatabase();
             for (int x = 0; x < list.Length; x++)
             {
                 if (list[x].getNumPassengers() < list[x].getMaxSeats())
@@ -105,7 +122,7 @@ namespace AirlineGUI
 
         public bool deleteFlight(int fid)
         {
-            List<Flight> list = flightDatabase().ToList();
+            List<Flight> list = getFlightsFromDatabase().ToList();
             int loc = findFlight(fid);
             bool passengers = getPassengers();
             if (loc == -1 && passengers == true) { return false; }
@@ -122,7 +139,7 @@ namespace AirlineGUI
 
         public string getFlightList()
         {
-            Flight[] list = flightDatabase();
+            Flight[] list = getFlightsFromDatabase();
             string s = "Flight List:\n";
 
             for (int x = 0; x < list.Length; x++)

@@ -46,7 +46,9 @@ namespace AirlineGUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.flightBox = new System.Windows.Forms.ListBox();
+            this.viewFlights = new System.Windows.Forms.Button();
+            this.btnSelFlight = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -265,22 +267,52 @@ namespace AirlineGUI
             this.panel3.Size = new System.Drawing.Size(500, 3);
             this.panel3.TabIndex = 21;
             // 
-            // flightBox
+            // viewFlights
             // 
-            this.flightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.flightBox.FormattingEnabled = true;
-            this.flightBox.ItemHeight = 20;
-            this.flightBox.Location = new System.Drawing.Point(316, 193);
-            this.flightBox.Name = "flightBox";
-            this.flightBox.Size = new System.Drawing.Size(500, 184);
-            this.flightBox.TabIndex = 22;
+            this.viewFlights.FlatAppearance.BorderSize = 0;
+            this.viewFlights.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.viewFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.viewFlights.ForeColor = System.Drawing.Color.White;
+            this.viewFlights.Location = new System.Drawing.Point(332, 435);
+            this.viewFlights.Name = "viewFlights";
+            this.viewFlights.Size = new System.Drawing.Size(186, 30);
+            this.viewFlights.TabIndex = 23;
+            this.viewFlights.Text = "View Flights";
+            this.viewFlights.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.viewFlights.UseVisualStyleBackColor = true;
+            this.viewFlights.Click += new System.EventHandler(this.viewFlights_Click);
+            // 
+            // btnSelFlight
+            // 
+            this.btnSelFlight.FlatAppearance.BorderSize = 0;
+            this.btnSelFlight.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSelFlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSelFlight.ForeColor = System.Drawing.Color.White;
+            this.btnSelFlight.Location = new System.Drawing.Point(606, 435);
+            this.btnSelFlight.Name = "btnSelFlight";
+            this.btnSelFlight.Size = new System.Drawing.Size(186, 30);
+            this.btnSelFlight.TabIndex = 24;
+            this.btnSelFlight.Text = "View Selected Flight";
+            this.btnSelFlight.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnSelFlight.UseVisualStyleBackColor = true;
+            this.btnSelFlight.Click += new System.EventHandler(this.btnSelFlight_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(305, 177);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(523, 228);
+            this.textBox1.TabIndex = 25;
             // 
             // ViewFlight
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
-            this.Controls.Add(this.flightBox);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnSelFlight);
+            this.Controls.Add(this.viewFlights);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -315,7 +347,9 @@ namespace AirlineGUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListBox flightBox;
+        private System.Windows.Forms.Button viewFlights;
+        private System.Windows.Forms.Button btnSelFlight;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

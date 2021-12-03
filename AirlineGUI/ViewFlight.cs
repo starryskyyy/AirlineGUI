@@ -12,9 +12,10 @@ namespace AirlineGUI
 {
     public partial class ViewFlight : Form
     {
-        public ViewFlight()
+        public ViewFlight(string value)
         {
             InitializeComponent();
+            textBox1.Text = value;
         }
 
         //Moveable Form
@@ -76,7 +77,7 @@ namespace AirlineGUI
         private void btnViewFlights_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ViewFlight vf = new ViewFlight();
+            ViewFlight vf = new ViewFlight(Program.viewFlights());
             vf.ShowDialog();
             this.Close();
         }
@@ -109,6 +110,17 @@ namespace AirlineGUI
             {
                 this.Close();
             }
+        }
+
+        private void btnSelFlight_Click(object sender, EventArgs e)
+        {
+            string selected = flightBox.SelectedItem.ToString();
+            MessageBox.Show(selected, "Flight Information");
+        }
+
+        private void ViewFlights_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

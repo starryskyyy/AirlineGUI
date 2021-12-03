@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,6 +109,66 @@ namespace AirlineGUI
             else
             {
                 this.Close();
+            }
+        }
+
+        private void btnCus_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+            string line;
+            StreamReader file = new StreamReader("customerDB.txt");
+            List<string> list = new List<string>();
+            while ((line = file.ReadLine()) != null)
+            {
+                if (cusBox.Items.Contains(line))
+                {
+                    btnCus.Enabled = true;
+                }
+                else
+                {
+                    cusBox.Items.Add(line);
+                    list.Add(line);
+                    counter++;
+                }
+            }
+            string[] arr = list.ToArray();
+        }
+
+        private void btnFlights_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+            string line;
+            StreamReader file = new StreamReader("flightDB.txt");
+            List<string> list = new List<string>();
+            while ((line = file.ReadLine()) != null)
+            {
+                if (flightBox.Items.Contains(line))
+                {
+                    flightBox.Enabled = true;
+                }
+                else
+                {
+                    flightBox.Items.Add(line);
+                    list.Add(line);
+                    counter++;
+                }
+            }
+            string[] arr = list.ToArray();
+        }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            int fn;
+            int cid;
+            string bookingDate = DateTime.Now.ToString(@"MM\/dd\/yyyy h\:mm tt");
+            if (!int.TryParse(cusIdTextBox.Text, out cid) || (!int.TryParse(flightIdTextBox.Text, out fn)))
+            {
+                MessageBox.Show("No Information Found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Successfully Created Booking!", "Successful", MessageBoxButtons.OK);
+                //Program.addBooking(new Booking(bookingDate, new Customer(fname, lname, ph), new Flight(fn, or, dest, mSeats));
             }
         }
     }

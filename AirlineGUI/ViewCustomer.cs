@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,19 +112,27 @@ namespace AirlineGUI
             }
         }
 
-        private void btnView_Click(object sender, EventArgs e)
+        private void viewCust_Click(object sender, EventArgs e)
         {
             int counter = 0;
             string line;
-            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\Users\Danny\source\repos\AirlineGUI\AirlineGUI\bin\Debug\customerDB.txt");
+            StreamReader file = new StreamReader("customerDB.txt");
             List<string> list = new List<string>();
             while ((line = file.ReadLine()) != null)
             {
-                customerBox.Items.Add(line);
-                list.Add(line);
-                counter++;
+                if (customerBox.Items.Contains(line))
+                {
+                    viewCust.Enabled = true;
+                }
+                else
+                {
+                    customerBox.Items.Add(line);
+                    list.Add(line);
+                    counter++;
+                }              
             }
             string[] arr = list.ToArray();
         }
+
     }
 }

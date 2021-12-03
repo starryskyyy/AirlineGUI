@@ -10,18 +10,18 @@ namespace AirlineGUI
     {
         FlightManager flManager;
         CustomerManager custManager;
-        //BookingManager bManager;
+        BookingManager bManager;
 
         public AirlineCoordinator(int maxCust, int maxFlights, int maxBookings)
         {
             flManager = new FlightManager(maxFlights);
             custManager = new CustomerManager(maxCust);
-            //bManager = new BookingManager(maxCust, flManager, custManager);
+            bManager = new BookingManager(flManager, custManager);
         }
 
-        public bool addFlight(int fn, string or, string dest, int mSeats)
+        public bool addFlight(int flNo, string or, string dest, int mSeats)
         {
-            return flManager.addFlight(fn, or, dest, mSeats);
+            return flManager.addFlight(flNo, or, dest, mSeats);
         }
 
 
@@ -46,10 +46,10 @@ namespace AirlineGUI
         }
 
 
-        /*public string bookingsList()
+        public string bookingsList()
         {
             return bManager.viewBookings();
-        }*/
+        }
 
         public bool customerExists(string fName, string lName, string phone)
         {
@@ -90,7 +90,7 @@ namespace AirlineGUI
             return flManager.getPassengers();
         }
 
-        /*public bool addBooking(int custID, int flightNum)
+        public bool addBooking(int custID, int flightNum)
         {
             return bManager.addBooking(custID, flightNum);
 
@@ -99,6 +99,6 @@ namespace AirlineGUI
         public string bookingList()
         {
             return bManager.viewBookings();
-        }*/
+        }
     }
 }

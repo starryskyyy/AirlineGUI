@@ -14,6 +14,7 @@ namespace AirlineGUI
         private int maxSeats;
         private int numPassengers;
         private Customer[] passengers;
+        private Customer[] checkPassenger;
 
         public Flight(int fn, string or, string dest, int mSeats)
         {
@@ -40,11 +41,16 @@ namespace AirlineGUI
             return true;
         }
 
+        public int availableSeats()
+        {
+            return (maxSeats - numPassengers);
+        }
         public int findPassenger(int custId)
         {
+            checkPassenger = CustomerManager.customerDatabase();
             for (int x = 0; x < maxSeats; x++)
             {
-                if (passengers[x].getId() == custId)
+                if (checkPassenger[x].getId() == custId)
                     return x;
             }
             return -1;
@@ -52,6 +58,7 @@ namespace AirlineGUI
 
         public bool removePassenger(int custId)
         {
+            checkPassenger = CustomerManager.customerDatabase();
             int loc = findPassenger(custId);
             if (loc == -1) return false;
             passengers[loc] = passengers[numPassengers - 1];
@@ -67,6 +74,11 @@ namespace AirlineGUI
                 s = s + "\n" + passengers[x].getFirstName() + " " + passengers[x].getLastName();
             }
             return s;
+        }
+
+        public override string ToString()
+        {
+            return "" + flightNumber + "," + origin + "," + destination + "," + maxSeats;
         }
 
         public string toString()

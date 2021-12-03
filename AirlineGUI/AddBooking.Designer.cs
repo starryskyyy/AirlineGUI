@@ -46,7 +46,15 @@ namespace AirlineGUI
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.bookingBox = new System.Windows.Forms.ListBox();
+            this.cusBox = new System.Windows.Forms.ListBox();
+            this.flightBox = new System.Windows.Forms.ListBox();
+            this.btnCus = new System.Windows.Forms.Button();
+            this.btnFlights = new System.Windows.Forms.Button();
+            this.btnAddBook = new System.Windows.Forms.Button();
+            this.flightIdTextBox = new System.Windows.Forms.TextBox();
+            this.cusIdTextBox = new System.Windows.Forms.TextBox();
+            this.fidLabel = new System.Windows.Forms.Label();
+            this.cidLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -265,22 +273,125 @@ namespace AirlineGUI
             this.panel3.Size = new System.Drawing.Size(500, 3);
             this.panel3.TabIndex = 21;
             // 
-            // bookingBox
+            // cusBox
             // 
-            this.bookingBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookingBox.FormattingEnabled = true;
-            this.bookingBox.ItemHeight = 20;
-            this.bookingBox.Location = new System.Drawing.Point(316, 193);
-            this.bookingBox.Name = "bookingBox";
-            this.bookingBox.Size = new System.Drawing.Size(500, 184);
-            this.bookingBox.TabIndex = 22;
+            this.cusBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusBox.FormattingEnabled = true;
+            this.cusBox.ItemHeight = 15;
+            this.cusBox.Location = new System.Drawing.Point(212, 193);
+            this.cusBox.Name = "cusBox";
+            this.cusBox.Size = new System.Drawing.Size(235, 214);
+            this.cusBox.TabIndex = 22;
+            // 
+            // flightBox
+            // 
+            this.flightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flightBox.FormattingEnabled = true;
+            this.flightBox.ItemHeight = 15;
+            this.flightBox.Location = new System.Drawing.Point(676, 193);
+            this.flightBox.Name = "flightBox";
+            this.flightBox.Size = new System.Drawing.Size(234, 214);
+            this.flightBox.TabIndex = 23;
+            // 
+            // btnCus
+            // 
+            this.btnCus.FlatAppearance.BorderSize = 0;
+            this.btnCus.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnCus.ForeColor = System.Drawing.Color.White;
+            this.btnCus.Location = new System.Drawing.Point(235, 435);
+            this.btnCus.Name = "btnCus";
+            this.btnCus.Size = new System.Drawing.Size(186, 30);
+            this.btnCus.TabIndex = 13;
+            this.btnCus.Text = "View Customers";
+            this.btnCus.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnCus.UseVisualStyleBackColor = true;
+            this.btnCus.Click += new System.EventHandler(this.btnCus_Click);
+            // 
+            // btnFlights
+            // 
+            this.btnFlights.FlatAppearance.BorderSize = 0;
+            this.btnFlights.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnFlights.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnFlights.ForeColor = System.Drawing.Color.White;
+            this.btnFlights.Location = new System.Drawing.Point(703, 435);
+            this.btnFlights.Name = "btnFlights";
+            this.btnFlights.Size = new System.Drawing.Size(186, 30);
+            this.btnFlights.TabIndex = 24;
+            this.btnFlights.Text = "View Flights";
+            this.btnFlights.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnFlights.UseVisualStyleBackColor = true;
+            this.btnFlights.Click += new System.EventHandler(this.btnFlights_Click);
+            // 
+            // btnAddBook
+            // 
+            this.btnAddBook.FlatAppearance.BorderSize = 0;
+            this.btnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAddBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnAddBook.ForeColor = System.Drawing.Color.White;
+            this.btnAddBook.Location = new System.Drawing.Point(470, 363);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(186, 30);
+            this.btnAddBook.TabIndex = 25;
+            this.btnAddBook.Text = "Add Booking";
+            this.btnAddBook.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
+            // 
+            // flightIdTextBox
+            // 
+            this.flightIdTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.flightIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flightIdTextBox.Location = new System.Drawing.Point(481, 294);
+            this.flightIdTextBox.Name = "flightIdTextBox";
+            this.flightIdTextBox.Size = new System.Drawing.Size(166, 26);
+            this.flightIdTextBox.TabIndex = 26;
+            // 
+            // cusIdTextBox
+            // 
+            this.cusIdTextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.cusIdTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cusIdTextBox.Location = new System.Drawing.Point(481, 222);
+            this.cusIdTextBox.Name = "cusIdTextBox";
+            this.cusIdTextBox.Size = new System.Drawing.Size(166, 26);
+            this.cusIdTextBox.TabIndex = 27;
+            // 
+            // fidLabel
+            // 
+            this.fidLabel.AutoSize = true;
+            this.fidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fidLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.fidLabel.Location = new System.Drawing.Point(479, 262);
+            this.fidLabel.Name = "fidLabel";
+            this.fidLabel.Size = new System.Drawing.Size(170, 20);
+            this.fidLabel.TabIndex = 30;
+            this.fidLabel.Text = "Enter Flight Number";
+            // 
+            // cidLabel
+            // 
+            this.cidLabel.AutoSize = true;
+            this.cidLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cidLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cidLabel.Location = new System.Drawing.Point(484, 193);
+            this.cidLabel.Name = "cidLabel";
+            this.cidLabel.Size = new System.Drawing.Size(159, 20);
+            this.cidLabel.TabIndex = 31;
+            this.cidLabel.Text = "Enter Customer ID";
             // 
             // AddBooking
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(951, 577);
-            this.Controls.Add(this.bookingBox);
+            this.Controls.Add(this.cidLabel);
+            this.Controls.Add(this.fidLabel);
+            this.Controls.Add(this.cusIdTextBox);
+            this.Controls.Add(this.flightIdTextBox);
+            this.Controls.Add(this.btnAddBook);
+            this.Controls.Add(this.btnFlights);
+            this.Controls.Add(this.btnCus);
+            this.Controls.Add(this.flightBox);
+            this.Controls.Add(this.cusBox);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
@@ -315,7 +426,15 @@ namespace AirlineGUI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCloseForm;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ListBox bookingBox;
+        private System.Windows.Forms.ListBox cusBox;
+        private System.Windows.Forms.ListBox flightBox;
+        private System.Windows.Forms.Button btnCus;
+        private System.Windows.Forms.Button btnFlights;
+        private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.TextBox flightIdTextBox;
+        private System.Windows.Forms.TextBox cusIdTextBox;
+        private System.Windows.Forms.Label fidLabel;
+        private System.Windows.Forms.Label cidLabel;
     }
 }
 
