@@ -6,6 +6,8 @@ Airline Manager is a group project designed to simplify airline operations manag
 
 The app's booking system is especially convenient, as it enables you to select flights and customers to create new bookings without any problems.
 
+App is written in C# language using Object Oriented Programming
+
 
 ## User interface example based on flight option
 
