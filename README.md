@@ -39,3 +39,4 @@ Run the application using Visual Studio 2019 or 2022
 ## Authors
 
 - [@starryskyyy](https://github.com/starryskyyy) :sparkling_heart:
+- [@Xquisite-G](https://github.com/Xquisite-G) :sparkling_heart:
